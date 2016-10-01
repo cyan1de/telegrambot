@@ -5,7 +5,7 @@ answers = {
         "как дела?": "Норм! А твои как?",
         "плохо": "Хреново тебе",
         "отлично": "Ну и чудненько!Давай общаться?",
-        "пока": "Ну вот, только начали,а ты уходишь!Ну и уходи :( Редис",
+        "пока": "Ну вот, только начали,а ты уходишь!Ну и уходи :( Редиска",
 }
 
 def main():
@@ -23,13 +23,11 @@ def talk_to_me(bot, update):
     print('Пришло сообщение: %s' % update.message.text)
 
     def get_answers(key, answers):
-        return answers.get(key)
+        return answers.get(key, 'Пишешь какую-то фигню, я не пониамю.Спроси что-нибудь нормальное!')
     user_input = update.message.text.lower().strip()
     answer = get_answers(user_input, answers)
     bot.sendMessage(update.message.chat_id, text = answer)
     bot.sendMessage(update.message.chat_id, update.message.text.encode('utf-8'))
-
-
 
 if __name__ == '__main__':
     main()
